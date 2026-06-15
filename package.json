@@ -1,0 +1,30 @@
+{
+  "name": "ai-game-factory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Game Factory — a 15-agent production pipeline that turns a game idea into a structured, buildable web game.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "bin": {
+    "ai-game-factory": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node --enable-source-maps dist/index.js",
+    "dev": "tsx src/index.ts",
+    "factory": "tsx src/index.ts",
+    "demo": "tsx src/index.ts --mock --idea \"A fast arcade game where you dodge falling asteroids\"",
+    "clean": "rm -rf dist generated"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
