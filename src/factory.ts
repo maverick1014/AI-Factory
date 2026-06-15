@@ -8,6 +8,7 @@
 import { join } from 'node:path';
 
 import { AGENTS, type AgentId } from './agents/index.js';
+import { buildArcade } from './arcade.js';
 import type { LlmClient } from './llm/index.js';
 import type {
   Architecture,
@@ -159,6 +160,14 @@ export class GameFactory {
     );
 
     await this.writeArtifacts(runDir);
+
+    // Refresh the arcade launcher so it lists every game generated so far.
+    try {
+      const arcade = await buildArcade(this.opts.outDir);
+      log.success(`arcade updated: ${arcade.path} (${arcade.count} game${arcade.count === 1 ? '' : 's'})`);
+    } catch (err) {
+      log.warn(`arcade build skipped: ${errMsg(err)}`);
+    }
 
     log.banner('Done.');
     return { runDir, mode: client.mode, context: this.ctx };
