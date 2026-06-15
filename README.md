@@ -60,6 +60,25 @@ The `/build-game` orchestrator delegates each stage to a dedicated subagent
 `artifacts/` + `game/` + `report.md` layout — all on your subscription, no
 `ANTHROPIC_API_KEY` required. See [`.claude/README.md`](.claude/README.md).
 
+## The Arcade — play all your games from one menu
+
+Every run also (re)builds **`generated/arcade.html`** — a single self-contained
+launcher that lists **all** the games you've generated. Open it in a browser to:
+
+- browse every game as a card (title, genre, engine, playability/fun scores),
+- click **▶ Play** to run a game in-place, and
+- use the persistent **← Back to menu** bar (or press `Esc`) on any game screen
+  to return to the list.
+
+```bash
+npm run arcade   # rebuild the menu on demand (also runs automatically after each game)
+# then open generated/arcade.html
+```
+
+Tip: some browsers restrict `file://` iframes — if a game doesn't load by
+double-clicking the file, serve the folder instead: `npx serve generated`
+(or `python3 -m http.server -d generated`) and open the printed URL.
+
 ## How it works
 
 The factory ([`src/factory.ts`](src/factory.ts)) runs the agents in dependency

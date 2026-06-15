@@ -17,6 +17,7 @@
     "dev": "tsx src/index.ts",
     "factory": "tsx src/index.ts",
     "demo": "tsx src/index.ts --mock --idea \"A fast arcade game where you dodge falling asteroids\"",
+    "arcade": "tsx src/arcade.ts",
     "clean": "rm -rf dist generated"
   },
   "dependencies": {
