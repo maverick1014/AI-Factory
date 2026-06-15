@@ -45,6 +45,21 @@ npx tsx src/index.ts --idea "A 2D platformer about a delivery drone"
 Output lands in `generated/<slug>-<timestamp>/`. Open `report.md` for a summary,
 or `game/index.html` to play (in mock mode the demo game runs with zero install).
 
+## Run on your Claude Pro/Max plan (no API key)
+
+Prefer to drive the factory with **Claude Code** instead of the API? The repo
+ships the same 15 agents as a Claude Code **subagent workflow** in
+[`.claude/`](.claude/). Open the repo in Claude Code and run:
+
+```
+/build-game A cozy farming game where you grow glowing mushrooms
+```
+
+The `/build-game` orchestrator delegates each stage to a dedicated subagent
+(`gf-pm`, `gf-architect`, …, `gf-analytics`) and writes the same
+`artifacts/` + `game/` + `report.md` layout — all on your subscription, no
+`ANTHROPIC_API_KEY` required. See [`.claude/README.md`](.claude/README.md).
+
 ## How it works
 
 The factory ([`src/factory.ts`](src/factory.ts)) runs the agents in dependency
